@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A5 Financial</title>
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Slick Slider -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
+<!-- GSAP for animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<style>
+/* Slider Container */
+.slider-container {
+  perspective: 1000px;
+  overflow: hidden;
+  width: 80%;
+  margin: auto;
+}
+
+/* Slick Slider */
+.slider {
+  display: flex;
+}
+
+.slide {
+  position: relative;
+  text-align: center;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(15deg);
+  transition: transform 0.5s ease;
+}
+
+.slick-center .slide {
+  transform: rotateY(0deg) scale(1.1);
+}
+
+.slide h2 {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.slick-center h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<script type="text/javascript">
+   
+<script>
+$(document).ready(function(){
+  $(".slider").slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 3,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    prevArrow: false,
+    nextArrow: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+
+  // GSAP Animation for Text on Slide Change
+  $(".slider").on("afterChange", function(event, slick, currentSlide){
+    gsap.fromTo(".slick-center h2", 
+      { opacity: 0, y: 30 }, 
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    );
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $(".slider").slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 3,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    prevArrow: false,
+    nextArrow: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+
+  // GSAP Animation for Text on Slide Change
+  $(".slider").on("afterChange", function(event, slick, currentSlide){
+    gsap.fromTo(".slick-center h2", 
+      { opacity: 0, y: 30 }, 
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    );
+  });
+});
+</script>
+
+</script>
+</head>
+<body>
+
+<div class="slider-container">
+  <div class="slider">
+    <div class="slide" style="background-image: url('s1.jpg');">
+      <h2>Slide 1: Welcome</h2>
+    </div>
+    <div class="slide" style="background-image: url('s2.jpg');">
+      <h2>Slide 2: Explore</h2>
+    </div>
+    <div class="slide" style="background-image: url('slide1.jpg');">
+      <h2>Slide 3: Discover</h2>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
